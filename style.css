@@ -5,110 +5,128 @@
   font-weight: 200 900; /* Define a faixa de peso da fonte variável */
   font-display: swap;
 }
+.menu-mobile { /* Esconde a barra mobile por padrão, mantendo o menu original no computador */
+    display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Rede de segurança: impede que qualquer elemento force a página a ficar mais larga que a tela */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
 
 body{
     background: linear-gradient(180deg, #00072d, #27187e );
     color: white;
-    min-height: 100vh;
+    min-height: 100vh;/* garante que o corpo ocupe pelo menos a altura da tela */
+    min-height: 100svh;
     margin: 0;
     display: flex;
     flex-direction: column;
+    
 }
+
 nav ul {
     list-style: none;      /* remove as bolinhas */
     display: flex;         /* coloca os itens lado a lado */
     align-items: center;   /* ALTERADO: alinha logo, links e botões na mesma linha vertical */
     margin: 0;
-    padding: 0;
     padding: 8px;
    
-  }
+}
 
-  nav li {
+nav li {
     margin: 0;
     margin-right: 1px;  /* espaço entre os itens */
-  }
+}
 
-  nav a {
+nav a {
     display: block;
     color: white;
     text-decoration: none;  /* remove o sublinhado do link */
     padding: 20px 8px;/* aumenta a área clicável do link */
-  }
+}
 
-  nav a.link-menu {
-    display: flex;
+nav a.link-menu {
+    display: flex; /* permite que o texto e a seta fiquem lado a lado */
     align-items: center;
     gap: 10px;/* espaço entre o texto e a seta */
-  }
+}
 
-  .seta-menu {
+.seta-menu {
     width: 0;
     height: 0;
-    transform: translateY(2px);
+    transform: translateY(2px);/* ajusta a posição vertical da seta */
     border-top: 6px solid white;
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
-  }
+}
 
-  nav a,
-  .acoes .botao {
-    font-size:clamp(2px, 5vw, 17px);
+nav a,
+.acoes .botao {
+    font-size: 17px;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  }
+}
 
-  nav a:hover {
+nav a:hover {
     color: #a0a0a0; /* muda a cor quando passa o mouse */
-  }
+}
 
-  #Logo {
+#Logo {
     width: 40px;
     height: 40px;
     margin-right: 13px; /* espaço entre o logo e o próximo item do menu */
     margin-left: 17px; /* espaço entre a borda esquerda e o logo */
     
-  }
-  #textoGrande {
-    font-size: clamp(30px, 5vw, 100px);
+}
+
+#textoGrande {
+    font-size:clamp(40px, 7.5vw, 60px);
     font-family: "Mona Sans", sans-serif;
-    width: min(85%, 1400px);
+    padding: 40px 80px;
     margin: 0;
     text-align: center;
-    transform: translateY(clamp(-80px, -5vh, -20px));
-  }
+    line-height: 1;/* reduz o espaçamento entre as linhas do título */
+}
 
-  .conteudo-principal {
+.conteudo-principal {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-  }
+    flex-direction: column;/* organiza o conteúdo principal em coluna */
+    align-items: center;/* centraliza horizontalmente o conteúdo principal */
+    justify-content: center;/* centraliza verticalmente o conteúdo principal */
+    padding: 2rem 1rem;
+    transform: translateY(-2rem);/* ajusta a posição vertical do conteúdo principal */
+}
 
-  .descricao-principal {
+.descricao-principal {
     width: min(55%, 1000px);
     margin: 0;
     text-align: center;
     font-family: "Mona Sans", sans-serif;
-    font-size: clamp(18px, 2vw, 22px);
-  }
+    font-size: clamp(20px, 2vw, 22px);
+}
 
-  /* ===== NOVO: botões de busca, Sign in e Sign up ===== */
+/* ===== NOVO: botões de busca, Sign in e Sign up ===== */
 
-  /* Empurra o item dos botões para a extremidade direita do menu */
-  .nav-acoes {
+/* Empurra o item dos botões para a extremidade direita do menu */
+.nav-acoes {
     margin-left: auto;
-  }
+}
 
-  .acoes {
+.acoes {
     display: flex;  /* coloca os botões lado a lado */
     align-items: center;
     gap: 12px; /* espaço entre os botões */
-  }
+}
 
-  .acoes .botao { /* estilo base para todos os botões */
+.acoes .botao { /* estilo base para todos os botões */
     box-sizing: border-box;
     display: inline-flex; /* permite que o botão seja flexível e tenha conteúdo alinhado */
     align-items: center;  /* alinha o conteúdo do botão verticalmente */
@@ -123,30 +141,28 @@ nav ul {
     text-decoration: none;
     cursor: pointer; /* muda o cursor para indicar que é clicável */
     transition: background-color 0.15s ease, border-color 0.15s ease; /* adiciona uma transição suave para as mudanças de cor */
-  }
+}
 
-  .acoes .botao:hover {
+.acoes .botao:hover {
     background: #0d0d4d;
     border-color: #3a3a75;
     color: #ffffff; /* impede que "nav a:hover" torne o texto cinza */
-  }
+}
 
-  /* Botão quadrado apenas com o ícone de busca */
-  .acoes .botao-busca { /* botão de busca */
+/* Botão quadrado apenas com o ícone de busca */
+.acoes .botao-busca { /* botão de busca */
     width: 40px;
     height: 34px;
     padding: 0;
-  }
+}
 
-  .acoes .botao-busca .icone-busca { /* ícone de busca dentro do botão */
+.acoes .botao-busca .icone-busca { /* ícone de busca dentro do botão */
     width: 21px;
     height: 21px;
     display: block;
-  }
+}
 
-
-
- #campoEmail {
+#campoEmail {
     flex: 1;/* Permite que o campo de e-mail ocupe o espaço disponível */
     min-width: 0;
     height: 54px;
@@ -156,14 +172,14 @@ nav ul {
     background: transparent;
     color: #24292f;
     font-size: clamp(14px, 2vw, 18px);
-  }
+}
 
-  #campoEmail::placeholder {
+#campoEmail::placeholder {
     color: #3f454d;
     opacity: 1;
-  }
+}
 
-  .grupoEmail { /* Agrupa o campo de e-mail e o botão de cadastro */
+.grupoEmail { /* Agrupa o campo de e-mail e o botão de cadastro */
     display: flex;
     flex: 1 1 65%;
     min-width: 0;
@@ -172,9 +188,9 @@ nav ul {
     padding: 5px;
     border-radius: 13px;
     background-color: #f0f0f3;
-  }
+}
 
-  #botaoCadastrar {/* Botão de cadastro */
+#botaoCadastrar {/* Botão de cadastro */
     min-height: 55px;
     padding: 0 10px;
     border: 0;
@@ -185,9 +201,9 @@ nav ul {
     font-weight: 700;
     white-space: nowrap;
     
-  }
+}
 
-  #botaoBaixarGit {
+#botaoBaixarGit {
     flex: 1 1 35%;
     min-height: 54px;
     border: 1px solid #ffffff;
@@ -198,87 +214,141 @@ nav ul {
     font-weight: 700;
     white-space: nowrap;
     cursor: pointer;
-  }
+}
 
-  #campoDigitar{
+#campoDigitar{
     display: flex;
     align-items: center;
     gap: 24px;
     width: min(60%, 900px);
     margin-top: 30px;
-  }
+}
 
-  @media (max-width: 760px) {/* Ajustes para telas menores que 760px */
-    #campoDigitar {
-      flex-direction: column;
-      align-items: stretch;
-      width: 70%;
-      height: 30%;
+/* ===== TRANSIÇÃO: o menu completo só cabe em telas com mais de 1000px =====
+   Largura natural do <ul> do menu desktop: aproximadamente 895px.
+   Abaixo de 1000px a barra mobile substitui o menu, evitando o transbordamento horizontal. */
+@media (max-width: 1000px) {
+
+    nav > ul {
+        display: none;
     }
 
-    .grupoEmail,
-    #botaoBaixarGit {
-      width: 90%;
+    .menu-mobile {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        width: 100%;
+        min-height: 54px;
+        padding: 8px 14px;
+        background: #00072d;
+    }
+
+    .botao-menu-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+    }
+
+    .botao-menu-mobile span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: white;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    #LogoMobile {
+        display: block;
+        justify-self: center;
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    .botao-mobile {
+        display: inline-flex;
+        justify-self: end;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+        padding: 0 9px;
+        border: 1px solid #1b1b55;
+        border-radius: 7px;
+        background: #06063a;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .botao-mobile:hover {
+        color: white;
+    }
+
+    /* Com 60% da largura, o formulário em linha fica estreito demais entre 641px e 1000px
+       e o campo de e-mail colapsa. Nessa faixa ele passa a usar mais espaço. */
+    #campoDigitar {
+        width: min(90%, 860px);
+    }
+}
+
+/* ===== CONTEÚDO PRINCIPAL EM TELAS PEQUENAS (formulário em coluna) ===== */
+@media (max-width: 640px) {
+
+    #textoGrande {
+        transform: translateY(-20px);
+        padding: 10px;
+        line-height: 1;
+    }
+
+    .descricao-principal {
+        width: 100%;
+    }
+
+    #campoDigitar {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        height: auto;
+        gap: 12px;
+    }
+
+    .grupoEmail {
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    #campoEmail,
+    #botaoCadastrar {
+        width: 100%;
+        min-height: 48px;
     }
 
     #botaoCadastrar {
-      padding: 0 2px;
-      font-size: 15px;
+        padding: 0 10px;
+        font-size: 15px;
+        white-space: normal;
+        line-height: 1.2;
     }
 
     #botaoBaixarGit {
-      min-height: 40px;
-      white-space: normal;
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: 60px;
+        white-space: normal;
+        line-height: 1.2;
     }
-  }
-
-  @media (max-width: 900px) { /* Ajustes para telas menores que 900px */
-    nav ul {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      padding: 12px 7px;
-      font-size: clamp(14px, 2vw, 17px);
-    }
-
-    .nav-acoes {
-      flex-basis: 100%;
-      margin-left: 0;
-    }
-
-    .acoes {
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 600px) {/* Ajustes para telas menores que 600px */
-    nav ul {
-      row-gap: 4px; /* adiciona espaçamento entre as linhas do menu */
-    }
-
-    nav li:first-child {
-     /* faz o primeiro item (logo) ocupar toda a largura */
-      text-align: center;
-      width: 100%;
-    }
-
-    #Logo {
-      margin: 4px 0;
-    }
-
-    nav a {
-      padding: 10px 6px;
-      font-size: 14px;
-    }
-
-    .acoes {
-      gap: 8px;
-    }
-
-    .acoes .botao {
-      padding: 0 7px;
-      font-size: 14px;
-    }
-  }
+}
